@@ -201,12 +201,17 @@ func main() {
 		}
 	}
 
-	issueLabels := strings.Split(strings.TrimSpace(os.Getenv(envVarIssueLabels)), ",")
-	for _, label := range issueLabels {
-		err := createLabelIfNotExists(client, repoOwner, repoFullName, label)
-		if err != nil {
-			fmt.Printf("error creating label: %v\n", err)
-			os.Exit(1)
+	issueLabels := []string{}
+	if os.Getenv(envVarIssueLabels) != "" {
+		issueLabelsSeq := strings.SplitSeq(strings.TrimSpace(os.Getenv(envVarIssueLabels)), ",")
+		for label := range issueLabelsSeq {
+			trimmedLabel := strings.TrimSpace(label)
+			err := createLabelIfNotExists(client, repoOwner, repoFullName, trimmedLabel)
+			if err != nil {
+				fmt.Printf("error creating label: %v\n", err)
+				os.Exit(1)
+			}
+			issueLabels = append(issueLabels, trimmedLabel)
 		}
 	}
 

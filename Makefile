@@ -23,7 +23,7 @@ test:
 
 .PHONY: lint
 lint:
-	docker run --rm -v $$(pwd):/app -w /app golangci/golangci-lint:v1.46.2 golangci-lint run -v
+	docker run --rm -v $$(pwd):/app -w /app golangci/golangci-lint:v1.64.5 golangci-lint run -v
 
 .PHONY: local-build
 local-build:
