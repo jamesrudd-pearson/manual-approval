@@ -22,6 +22,8 @@ func createLabelIfNotExists(client *github.Client, repoOwner string, repoFullNam
 		return nil
 	}
 
+	fmt.Printf("Label \"%s\" does not exist in \"%s/%s\". Creating it...\n", label, repoOwner, repoFullName)
+
 	_, _, err = client.Issues.CreateLabel(context.Background(), repoOwner, repoFullName, &github.Label{
 		Name: &label,
 	})
