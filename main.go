@@ -206,7 +206,7 @@ func main() {
 		issueLabelsSeq := strings.SplitSeq(strings.TrimSpace(os.Getenv(envVarIssueLabels)), ",")
 		for label := range issueLabelsSeq {
 			trimmedLabel := strings.TrimSpace(label)
-			err := createLabelIfNotExists(client, repoOwner, repoFullName, trimmedLabel)
+			err := createLabelIfNotExists(client, repoFullName, trimmedLabel)
 			if err != nil {
 				fmt.Printf("error creating label: %v\n", err)
 				os.Exit(1)
