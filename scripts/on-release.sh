@@ -11,6 +11,9 @@ MAJOR_VERSION=$(echo $RELEASE_VERSION | cut -d. -f1)
 
 sed -i "s|\(image: docker://ghcr.io/jamesrudd-pearson/manual-approval:\)[0-9]\+\.[0-9]\+\.[0-9]\+|\1$RELEASE_VERSION|g" action.yaml
 
+git config --global user.email "actions-bot@github.com"
+git config --global user.name "actions-bot"
+
 git add action.yaml
 git commit -m "Release $RELEASE_VERSION [skip ci]"
 git push origin main
