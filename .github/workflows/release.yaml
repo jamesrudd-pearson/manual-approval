@@ -20,6 +20,13 @@ jobs:
         with:
           go-version: 1.24
 
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
       - name: semantic-release
         id: semantic-release
         uses: go-semantic-release/action@v1
