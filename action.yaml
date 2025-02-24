@@ -43,4 +43,4 @@ inputs:
     default: "true"
 runs:
   using: docker
-  image: docker://ghcr.io/jamesrudd-pearson/manual-approval:1.1.3
+  image: docker://ghcr.io/jamesrudd-pearson/manual-approval:1.1.4
